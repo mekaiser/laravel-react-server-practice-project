@@ -22,4 +22,19 @@ class ProductController extends Controller
 
         // return $req->file('file-name')->store('products');
     }
+
+    public function list()
+    {
+        return Product::all();
+    }
+
+    public function delete($id)
+    {
+        $result = Product::where('id', $id)->delete();
+        if ($result) {
+            return ["result" => "product has been deleted"];
+        } else {
+            return ["result" => "operation failed"];
+        }
+    }
 }
