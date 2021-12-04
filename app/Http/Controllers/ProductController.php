@@ -42,4 +42,9 @@ class ProductController extends Controller
     {
         return Product::find($id);
     }
+
+    public function search($key)
+    {
+        return Product::where('name', 'Like', "%$key%")->get();
+    }
 }
